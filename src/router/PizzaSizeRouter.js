@@ -4,7 +4,7 @@ const PizzaSizeController = require("../controller/PizzaSizeController")
 router.get("/findById/:id", PizzaSizeController.findPizzaSizeById)
 router.get("/findAll", PizzaSizeController.findAllPizzaSizes)
 router.post("/create", PizzaSizeController.createPizzaSize)
-router.put("/update", PizzaSizeController.updatePizzaSize)
+router.put("/update/:id", PizzaSizeController.updatePizzaSize)
 router.patch("/updateAvailability", PizzaSizeController.updateAvailability)
 router.delete("/remove/:id", PizzaSizeController.removePizzaSize)
 
