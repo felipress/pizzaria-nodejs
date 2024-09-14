@@ -20,7 +20,7 @@ const updateAvailability = (id, availability) => {
     return Pizza.findOneAndUpdate(
         {_id: id},
         {
-            $set: {availability: availability}
+            $set: {available: availability}
         }
     )
 }

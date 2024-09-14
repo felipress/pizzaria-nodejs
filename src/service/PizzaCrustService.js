@@ -21,7 +21,7 @@ const updateAvailability = (id, availability) => {
     return PizzaCrust.findOneAndUpdate(
         {_id: id},
         {
-            $set: {availability: availability}
+            $set: {available: availability}
         }
     )
 }

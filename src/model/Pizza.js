@@ -17,6 +17,7 @@ const PizzaSchema = new mongoose.Schema({
     flavors: [
         {type: mongoose.Schema.Types.ObjectId, required: true, ref: "pizzaflavors"}
     ],
+    available: {type: String, required: true, default: true},
     createAt: {type: Date, required: true, default: Date.now()}
 })
 

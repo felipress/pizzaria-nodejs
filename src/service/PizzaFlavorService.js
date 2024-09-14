@@ -21,7 +21,7 @@ const updateAvailability = (id, availability) => {
     return PizzaFlavor.findOneAndUpdate(
         {_id: id},
         {
-            $set: {availability: availability}
+            $set: {available: availability}
         }
     )
 }
