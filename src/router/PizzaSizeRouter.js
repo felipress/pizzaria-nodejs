@@ -5,7 +5,7 @@ router.get("/findById/:id", PizzaSizeController.findPizzaSizeById)
 router.get("/findAll", PizzaSizeController.findAllPizzaSizes)
 router.post("/create", PizzaSizeController.createPizzaSize)
 router.put("/update/:id", PizzaSizeController.updatePizzaSize)
-router.patch("/updateAvailability", PizzaSizeController.updateAvailability)
+router.patch("/updateAvailability/:id", PizzaSizeController.updateAvailability)
 router.delete("/remove/:id", PizzaSizeController.removePizzaSize)
 
 module.exports = router
