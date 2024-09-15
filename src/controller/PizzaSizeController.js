@@ -54,7 +54,8 @@ const updatePizzaSize = async (req, res) => {
 
 const updateAvailability = async (req, res) => {
     try{
-        const PizzaSize = await PizzaSizeService.updateAvailability(req.params.id, req.body)
+        const {available} = req.body
+        const PizzaSize = await PizzaSizeService.updateAvailability(req.params.id, available)
         return res.status(200).send(PizzaSize)
     }
     catch(err){

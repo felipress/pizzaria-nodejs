@@ -54,7 +54,8 @@ const updatePizzaCrust = async (req, res) => {
 
 const updateAvailability = async (req, res) => {
     try{
-        const PizzaCrust = await PizzaCrustService.updateAvailability(req.params.id, req.body)
+        const {available} = req.body
+        const PizzaCrust = await PizzaCrustService.updateAvailability(req.params.id, available)
         return res.status(200).send(PizzaCrust)
     }
     catch(err){
