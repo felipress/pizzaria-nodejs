@@ -67,7 +67,7 @@ const updateAvailability = async (req, res) => {
 
 const removePizza = async (req, res) => {
     try{
-        const pizza = PizzaService.removePizza(req.params.id)
+        const pizza = await PizzaService.removePizza(req.params.id)
         return res.status(200).send(pizza)
     }
     catch(err){
