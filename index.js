@@ -17,6 +17,8 @@ const port = 3000
 app.use(express.json())
 
 // ROUTES DEPENDENCIES
+const authRoutes = require("./src/router/auth.router")
+const userRoutes = require("./src/router/user.router")
 const PizzaRoutes = require("./src/router/pizza.router")
 const PizzaCrustRoutes = require("./src/router/pizzaCrust.router")
 const PizzaDoughRoutes = require("./src/router/pizzaDough.router")
@@ -24,6 +26,8 @@ const PizzaFlavorRoutes = require("./src/router/pizzaFlavor.router")
 const PizzaSizeRoutes = require("./src/router/pizzaSize.router")
 
 // ROUTES CALLING
+app.use("/auth", authRoutes)
+app.use("/user", userRoutes)
 app.use("/pizza", PizzaRoutes)
 app.use("/pizza/crust", PizzaCrustRoutes)
 app.use("/pizza/dough", PizzaDoughRoutes)
