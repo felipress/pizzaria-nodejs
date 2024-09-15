@@ -18,6 +18,7 @@ const PizzaSchema = new mongoose.Schema({
         {type: mongoose.Schema.Types.ObjectId, required: true, ref: "pizzaflavors"}
     ],
     available: {type: String, required: true, default: true},
+    authorId: {type: mongoose.Schema.Types.ObjectId, ref: "users"},
     createAt: {type: Date, required: true, default: Date.now()}
 })
 

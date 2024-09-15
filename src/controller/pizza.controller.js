@@ -1,9 +1,9 @@
-const PizzaDoughService = require("../service/PizzaDoughService")
+const PizzaService = require("../service/pizza.service")
 
-const findPizzaDoughById = async (req, res) => {
+const findPizzaById = async (req, res) => {
     try{
-        const PizzaDough = await PizzaDoughService.findPizzaDoughById(req.params.id)
-        return res.status(200).send(PizzaDough)
+        const pizza = await PizzaService.findPizzaById(req.params.id)
+        return res.status(200).send(pizza)
     }
     catch(err){
         console.log(`Erro: ${err.message}`)
@@ -13,10 +13,10 @@ const findPizzaDoughById = async (req, res) => {
     }
 }
 
-const findAllPizzaDoughs = async (req, res) => {
+const findAllPizzas = async (req, res) => {
     try{
-        const PizzaDoughs = await PizzaDoughService.findAllPizzaDoughs()
-        return res.status(200).send(PizzaDoughs)
+        const pizzas = await PizzaService.findAllPizzas()
+        return res.status(200).send(pizzas)
     }
     catch(err){
         console.log(`Erro: ${err.message}`)
@@ -26,10 +26,10 @@ const findAllPizzaDoughs = async (req, res) => {
     }
 }
 
-const createPizzaDough = async (req, res) => {
+const createPizza = async (req, res) => {
     try{
-        const PizzaDough = await PizzaDoughService.createPizzaDough(req.body)
-        return res.status(201).send(PizzaDough)
+        const pizza = await PizzaService.createPizza(req.body)
+        return res.status(201).send(pizza)
     }
     catch(err){
         console.log(`Erro: ${err.message}`)
@@ -39,10 +39,10 @@ const createPizzaDough = async (req, res) => {
     }
 }
 
-const updatePizzaDough = async (req, res) => {
+const updatePizza = async (req, res) => {
     try{
-        const PizzaDough = await PizzaDoughService.updatePizzaDough(req.params.id, req.body)
-        return res.status(200).send(PizzaDough)
+        const pizza = await PizzaService.updatePizza(req.params.id, req.body)
+        return res.status(200).send(pizza)
     }
     catch(err){
         console.log(`Erro: ${err.message}`)
@@ -55,8 +55,8 @@ const updatePizzaDough = async (req, res) => {
 const updateAvailability = async (req, res) => {
     try{
         const {available} = req.body
-        const PizzaDough = await PizzaDoughService.updateAvailability(req.params.id, available)
-        return res.status(200).send(PizzaDough)
+        const pizza = await PizzaService.updateAvailability(req.params.id, available)
+        return res.status(200).send(pizza)
     }
     catch(err){
         console.log(`Erro: ${err.message}`)
@@ -66,10 +66,10 @@ const updateAvailability = async (req, res) => {
     }
 }
 
-const removePizzaDough = async (req, res) => {
+const removePizza = async (req, res) => {
     try{
-        const PizzaDough = await PizzaDoughService.removePizzaDough(req.params.id)
-        return res.status(200).send(PizzaDough)
+        const pizza = await PizzaService.removePizza(req.params.id)
+        return res.status(200).send(pizza)
     }
     catch(err){
         console.log(`Erro: ${err.message}`)
@@ -80,10 +80,10 @@ const removePizzaDough = async (req, res) => {
 }
 
 module.exports = {
-    findPizzaDoughById,
-    findAllPizzaDoughs,
-    createPizzaDough,
-    updatePizzaDough,
+    findPizzaById,
+    findAllPizzas,
+    createPizza,
+    updatePizza,
     updateAvailability,
-    removePizzaDough
+    removePizza
 }

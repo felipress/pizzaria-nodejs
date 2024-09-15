@@ -1,5 +1,5 @@
 const router = require("express").Router()
-const PizzaController = require("../controller/PizzaController")
+const PizzaController = require("../controller/pizza.controller")
 
 router.get("/findById/:id", PizzaController.findPizzaById)
 router.get("/findAll", PizzaController.findAllPizzas)

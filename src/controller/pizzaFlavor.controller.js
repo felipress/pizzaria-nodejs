@@ -1,4 +1,4 @@
-const PizzaFlavorService = require("../service/PizzaFlavorService")
+const PizzaFlavorService = require("../service/pizzaFlavor.service")
 
 const findPizzaFlavorById = async (req, res) => {
     try{

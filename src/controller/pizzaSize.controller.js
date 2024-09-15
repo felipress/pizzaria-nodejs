@@ -1,4 +1,4 @@
-const PizzaSizeService = require("../service/PizzaSizeService")
+const PizzaSizeService = require("../service/pizzaSize.service")
 
 const findPizzaSizeById = async (req, res) => {
     try{

@@ -17,11 +17,11 @@ const port = 3000
 app.use(express.json())
 
 // ROUTES DEPENDENCIES
-const PizzaRoutes = require("./src/router/PizzaRouter")
-const PizzaCrustRoutes = require("./src/router/PizzaCrustRouter")
-const PizzaDoughRoutes = require("./src/router/PizzaDoughRouter")
-const PizzaFlavorRoutes = require("./src/router/PizzaFlavorRouter")
-const PizzaSizeRoutes = require("./src/router/PizzaSizeRouter")
+const PizzaRoutes = require("./src/router/pizza.router")
+const PizzaCrustRoutes = require("./src/router/pizzaCrust.router")
+const PizzaDoughRoutes = require("./src/router/pizzaDough.router")
+const PizzaFlavorRoutes = require("./src/router/pizzaFlavor.router")
+const PizzaSizeRoutes = require("./src/router/pizzaSize.router")
 
 // ROUTES CALLING
 app.use("/pizza", PizzaRoutes)
@@ -32,5 +32,5 @@ app.use("/pizza/size", PizzaSizeRoutes)
 
 // SERVER START
 app.listen(port, () => {
-    console.log(`O servidor está rodadndo em http://localhost:${port}`)
+    console.log(`O servidor está rodando em http://localhost:${port}`)
 })
