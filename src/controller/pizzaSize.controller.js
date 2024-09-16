@@ -2,8 +2,13 @@ const PizzaSizeService = require("../service/pizzaSize.service")
 
 const findPizzaSizeById = async (req, res) => {
     try{
-        const PizzaSize = await PizzaSizeService.findPizzaSizeById(req.params.id)
-        return res.status(200).send(PizzaSize)
+        const pizzaSize = await PizzaSizeService.findPizzaSizeById(req.params.id)
+        if(!pizzaSize){
+            return res.status(404).send({
+                message: `Nenhum resultado foi encontrado.`
+            })
+        }
+        return res.status(200).send(pizzaSize)
     }
     catch(err){
         console.log(`Erro: ${err.message}`)

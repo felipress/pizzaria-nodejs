@@ -2,8 +2,13 @@ const PizzaFlavorService = require("../service/pizzaFlavor.service")
 
 const findPizzaFlavorById = async (req, res) => {
     try{
-        const PizzaFlavor = await PizzaFlavorService.findPizzaFlavorById(req.params.id)
-        return res.status(200).send(PizzaFlavor)
+        const pizzaFlavor = await PizzaFlavorService.findPizzaFlavorById(req.params.id)
+        if(!pizzaFlavor){
+            return res.status(404).send({
+                message: `Nenhum resultado foi encontrado.`
+            })
+        }
+        return res.status(200).send(pizzaFlavor)
     }
     catch(err){
         console.log(`Erro: ${err.message}`)
