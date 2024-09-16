@@ -1,7 +1,9 @@
 const jwt = require("jsonwebtoken")
 const {findUserById} = require("../service/user.service")
 
-module.exports = async (req, res, next) => {
+
+// User logged
+const auth = async (req, res, next) => {
     const authHeader = req.headers.authorization
 
     if(!authHeader){
@@ -45,4 +47,21 @@ module.exports = async (req, res, next) => {
         
         return next()
     })
+}
+
+// Admin user
+const adminUser = async (req, res, next) => {
+    const user = await findUserById(req.userId)
+    
+    if(user.adminUser == false){
+        return res.status(401).send({
+            message: "É necessário ser um administrador para executar esta ação."
+        })
+    }
+    return next()
+}
+
+module.exports = {
+    auth,
+    adminUser
 }

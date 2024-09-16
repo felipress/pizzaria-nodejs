@@ -3,7 +3,7 @@ const pagination = (req, res, next) => {
     limit = Number(limit)
     offset = Number(offset)
 
-    !limit ? limit = 10: null
+    !limit ? limit = 20: null
     !offset ? offset = 0: null
 
     req.query.limit = limit

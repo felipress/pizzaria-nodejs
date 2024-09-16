@@ -15,7 +15,7 @@ const findPizzaById = async (req, res) => {
 
 const findAllPizzas = async (req, res) => {
     try{
-        const pizzas = await PizzaService.findAllPizzas()
+        const pizzas = await PizzaService.findAllPizzas(req.query.limit, req.query.offset)
         return res.status(200).send(pizzas)
     }
     catch(err){
