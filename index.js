@@ -24,6 +24,7 @@ const PizzaCrustRoutes = require("./src/router/pizzaCrust.router")
 const PizzaDoughRoutes = require("./src/router/pizzaDough.router")
 const PizzaFlavorRoutes = require("./src/router/pizzaFlavor.router")
 const PizzaSizeRoutes = require("./src/router/pizzaSize.router")
+const SideDishRoutes = require("./src/router/sideDish.router")
 
 // ROUTES CALLING
 app.use("/auth", authRoutes)
@@ -33,6 +34,7 @@ app.use("/pizza/crust", PizzaCrustRoutes)
 app.use("/pizza/dough", PizzaDoughRoutes)
 app.use("/pizza/flavor", PizzaFlavorRoutes)
 app.use("/pizza/size", PizzaSizeRoutes)
+app.use("/sideDish", SideDishRoutes)
 
 // SERVER START
 app.listen(port, () => {
