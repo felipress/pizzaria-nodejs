@@ -2,7 +2,7 @@ const SideDishService = require("../service/sideDish.service")
 
 const findSideDishById = async (req, res) => {
     try{
-        const sideDish = await SideDishService.findById(req.params.id)
+        const sideDish = await SideDishService.findSideDishById(req.params.id)
         if(!sideDish){
             return res.status(404).send({
                 message: `Nenhum resultado encontrado.`
@@ -20,7 +20,7 @@ const findSideDishById = async (req, res) => {
 
 const findAllSideDishes = async (req, res) => {
     try{
-        const sideDishes = await SideDishService.findAll(req.query.limit, req.query.offset)
+        const sideDishes = await SideDishService.findAllSideDishes(req.query.limit, req.query.offset)
         if(!sideDishes){
             return res.status(404).send({
                 message: `Nenhum resultado encontrado.`
@@ -38,7 +38,7 @@ const findAllSideDishes = async (req, res) => {
 
 const createSideDish = async (req, res) => {
     try{
-        const sideDish = await SideDishService.create(req.body)
+        const sideDish = await SideDishService.createSideDish(req.body)
         return res.status(201).send({
             message: `Item cadastrado com sucesso.`,
             details: sideDish
@@ -54,7 +54,7 @@ const createSideDish = async (req, res) => {
 
 const updateSideDish = async (req, res) => {
     try{
-        const sideDish = await SideDishService.update(req.params.id, req.body)
+        const sideDish = await SideDishService.updateSideDish(req.params.id, req.body)
         return res.status(200).send({
             message: `Item atualizado com sucesso.`,
             details: sideDish
@@ -87,7 +87,7 @@ const updateAvailability = async (req, res) => {
 
 const removeSideDish = async (req, res) => {
     try{
-        const sideDish = await SideDishService.remove(req.params.id)
+        const sideDish = await SideDishService.removeSideDish(req.params.id)
         return res.status(200).send({
             message: `Item removido com sucesso.`,
             details: sideDish

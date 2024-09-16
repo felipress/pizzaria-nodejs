@@ -1,18 +1,18 @@
 const SideDishes = require("../model/SideDish")
 
-const findById = (id) => {
+const findSideDishById = (id) => {
     return SideDishes.findById(id)
 }
 
-const findAll = (limit, offset) => {
+const findAllSideDishes = (limit, offset) => {
     return SideDishes.find().limit(limit).skip(offset)
 }
 
-const create = (body) => {
+const createSideDish = (body) => {
     return SideDishes.create(body)
 }
 
-const update = (id, body) => {
+const updateSideDish = (id, body) => {
     return SideDishes.findByIdAndUpdate(id, body, {returnDocument: "after"})
 }
 
@@ -28,15 +28,15 @@ const updateAvailability = (id, availability) => {
     )
 }
 
-const remove = (id) => {
+const removeSideDish = (id) => {
     return SideDishes.findByIdAndDelete(id)
 }
 
 module.exports = {
-    findById,
-    findAll,
-    create,
-    update,
+    findSideDishById,
+    findAllSideDishes,
+    createSideDish,
+    updateSideDish,
     updateAvailability,
-    remove
+    removeSideDish
 }
