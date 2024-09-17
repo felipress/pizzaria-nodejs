@@ -65,7 +65,7 @@ const updateUser = async (req, res) => {
         validateRequiredField(res, "password", body.password)
 
         // Updating user in the database
-        return res.send(await userService.updateUser(req.params.id, req.body))
+        return res.status(200).send(await userService.updateUser(req.params.id, body))
     }
     catch(err){
         console.log(`Erro: ${err.message}`)
