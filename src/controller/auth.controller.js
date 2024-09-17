@@ -6,8 +6,10 @@ const login = async (req, res) => {
         const {email, password} = req.body
         const user = await authService.login(email)
     
-        const isPasswordValid = await bcrypt.compare(password, user.password)
-        
+        let isPasswordValid
+        if(user){
+            isPasswordValid = await bcrypt.compare(password, user.password)
+        }
         if(isPasswordValid){
             const token = authService.generateToken(user.id)
             return res.status(200).send({
@@ -15,11 +17,10 @@ const login = async (req, res) => {
                 token
             })
         }
-        else{
-            return res.status(401).send({
-                message: `E-mail ou senha inválidos.`
-            })
-        }
+        
+        return res.status(401).send({
+            message: `E-mail ou senha inválidos.`
+        })
     }
     catch(err){
         console.log(`Erro: ${err.message}`)
