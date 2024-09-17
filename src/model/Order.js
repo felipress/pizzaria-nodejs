@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 const OrderSchema = new mongoose.Schema({
-    shoppingCart: {type: mongoose.Schema.Types.ObjectId, required: true, ref: "shoppingcarts"},
+    cart: {type: mongoose.Schema.Types.ObjectId, required: true, ref: "carts"},
     products: [
         {
             _id: {type: mongoose.Schema.Types.ObjectId, ref: "pizzas"},

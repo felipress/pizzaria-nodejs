@@ -57,10 +57,10 @@ const findAllUsersOrders = async (req, res) => {
 
 const createOrder = async (req, res) => {
     try{
-        const body = {
+        const body = [{
             ...req.body,
             userId: req.userId
-        }
+        }]
         const order = await orderService.createOrder(body)
         return res.status(200).send({
             message: `Pedido criado com sucesso.`,

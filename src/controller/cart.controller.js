@@ -29,10 +29,10 @@ const findAllCarts = async (req, res) => {
 const createCart = async (req, res) => {
     try{
         console.log(req.userId)
-        let body = {
+        let body = [{
             ...req.body,
             userId: req.userId
-        }
+        }]
         const cart = await CartService.createCart(body)
         return res.status(201).send({
             message: `Item cadastrado com sucesso.`,
