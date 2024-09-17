@@ -1,9 +1,9 @@
-const ShoppingCartService = require("../service/shoppingCart.service")
+const CartService = require("../service/cart.service")
 
-const findShoppingCartById = async (req, res) => {
+const findCartById = async (req, res) => {
     try{
-        const shoppingCart = await ShoppingCartService.findShoppingCartById(req.params.id)
-        return res.status(200).send(shoppingCart)
+        const cart = await CartService.findCartById(req.params.id)
+        return res.status(200).send(cart)
     }
     catch(err){
         console.log(`Erro: ${err.message}`)
@@ -13,10 +13,10 @@ const findShoppingCartById = async (req, res) => {
     }
 }
 
-const findAllShoppingCarts = async (req, res) => {
+const findAllCarts = async (req, res) => {
     try{
-        const shoppingCarts = await ShoppingCartService.findAllShoppingCarts(req.query.limit, req.query.offset)
-        return res.status(200).send(shoppingCarts)
+        const carts = await CartService.findAllCarts(req.query.limit, req.query.offset)
+        return res.status(200).send(carts)
     }
     catch(err){
         console.log(`Erro: ${err.message}`)
@@ -26,17 +26,17 @@ const findAllShoppingCarts = async (req, res) => {
     }
 }
 
-const createShoppingCart = async (req, res) => {
+const createCart = async (req, res) => {
     try{
         console.log(req.userId)
         let body = {
             ...req.body,
             userId: req.userId
         }
-        const shoppingCart = await ShoppingCartService.createShoppingCart(body)
+        const cart = await CartService.createCart(body)
         return res.status(201).send({
             message: `Item cadastrado com sucesso.`,
-            details: shoppingCart
+            details: cart
         })
     }
     catch(err){
@@ -47,12 +47,12 @@ const createShoppingCart = async (req, res) => {
     }
 }
 
-const updateShoppingCart = async (req, res) => {
+const updateCart = async (req, res) => {
     try{
-        const shoppingCart = await ShoppingCartService.updateShoppingCart(req.params.id, req.body)
+        const cart = await CartService.updateCart(req.params.id, req.body)
         return res.status(200).send({
             message: `Item atualizado com sucesso.`,
-            details: shoppingCart
+            details: cart
         })
     }
     catch(err){
@@ -63,12 +63,12 @@ const updateShoppingCart = async (req, res) => {
     }
 }
 
-const removeShoppingCart = async (req, res) => {
+const removeCart = async (req, res) => {
     try{
-        const shoppingCart = await ShoppingCartService.removeShoppingCart(req.params.id)
+        const cart = await CartService.removeCart(req.params.id)
         return res.status(200).send({
             message: `Item removido com sucesso.`,
-            details: shoppin
+            details: cart
         })
     }
     catch(err){
@@ -80,9 +80,9 @@ const removeShoppingCart = async (req, res) => {
 }
 
 module.exports = {
-    findShoppingCartById,
-    findAllShoppingCarts,
-    createShoppingCart,
-    updateShoppingCart,
-    removeShoppingCart
+    findCartById,
+    findAllCarts,
+    createCart,
+    updateCart,
+    removeCart
 }

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const ShoppingCartSchema = new mongoose.Schema({
+const CartSchema = new mongoose.Schema({
     products: [
         {
             _id: {type: mongoose.Schema.Types.ObjectId, ref: "pizza"},
@@ -17,6 +17,6 @@ const ShoppingCartSchema = new mongoose.Schema({
     createdAt: {type: Date, required: true, default: Date.now()}
 })
 
-const ShoppingCart = mongoose.model("shoppingcarts", ShoppingCartSchema)
+const Cart = mongoose.model("carts", CartSchema)
 
-module.exports = ShoppingCart
+module.exports = Cart
