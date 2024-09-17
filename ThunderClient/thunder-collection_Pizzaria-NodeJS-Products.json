@@ -1,0 +1,585 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Pizzaria-NodeJS-Products",
+    "collectionId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+    "dateExported": "2024-09-17T15:53:03.404Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "774ff813-cf54-4635-b88d-5ee597177f7c",
+            "name": "Pizza",
+            "containerId": "",
+            "created": "2024-09-17T11:01:18.808Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "8423f28e-2539-4aba-8cc2-d51e63b1f74f",
+            "name": "Pizza/Crust",
+            "containerId": "",
+            "created": "2024-09-17T11:01:24.103Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "b7e27684-af40-46a5-9aaa-320ca41bf073",
+            "name": "Pizza/Dough",
+            "containerId": "",
+            "created": "2024-09-17T11:01:35.203Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "316258df-a82b-43dc-88dd-93b5569f5720",
+            "name": "Pizza/Size",
+            "containerId": "",
+            "created": "2024-09-17T11:01:38.246Z",
+            "sortNum": 40000
+        },
+        {
+            "_id": "2e24aea8-98c6-4767-99cc-6beb304c4018",
+            "name": "Pizza/Flavor",
+            "containerId": "",
+            "created": "2024-09-17T11:01:50.797Z",
+            "sortNum": 50000
+        },
+        {
+            "_id": "aab82d65-3617-47ea-81f1-7110a07dbe9d",
+            "name": "SideDish",
+            "containerId": "",
+            "created": "2024-09-17T11:12:07.750Z",
+            "sortNum": 60000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "4558c92f-b5e4-4dcc-a67d-5e5c9111e3b7",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "774ff813-cf54-4635-b88d-5ee597177f7c",
+            "name": "findById",
+            "url": "/pizza/findById/66e603f7b4f80e4531263722",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-09-17T11:01:18.814Z",
+            "modified": "2024-09-17T11:01:18.814Z",
+            "headers": []
+        },
+        {
+            "_id": "0641a71c-027c-433b-81dd-bfa1880fdbb2",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "aab82d65-3617-47ea-81f1-7110a07dbe9d",
+            "name": "findById",
+            "url": "/sideDish/findById/66e603f7b4f80e4531263722",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-09-17T11:12:07.756Z",
+            "modified": "2024-09-17T11:12:07.756Z",
+            "headers": []
+        },
+        {
+            "_id": "49d26bf5-75f8-4999-9cb5-db6f412337c3",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "774ff813-cf54-4635-b88d-5ee597177f7c",
+            "name": "findAll",
+            "url": "/pizza/findAll",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-09-17T11:01:18.814Z",
+            "modified": "2024-09-17T11:01:18.814Z",
+            "headers": []
+        },
+        {
+            "_id": "14cc8ae7-b622-4a7f-a70e-cc2619a5a6b1",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "aab82d65-3617-47ea-81f1-7110a07dbe9d",
+            "name": "findAll",
+            "url": "/sideDish/findAll",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-09-17T11:12:07.756Z",
+            "modified": "2024-09-17T11:12:07.756Z",
+            "headers": []
+        },
+        {
+            "_id": "d61e7b50-41b7-45f9-882d-c5510a143c38",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "774ff813-cf54-4635-b88d-5ee597177f7c",
+            "name": "create",
+            "url": "/pizza/create",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-09-17T11:01:18.814Z",
+            "modified": "2024-09-17T15:28:15.344Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Calabresa / Camarão\",\n  \"description\": \"Saborosa pizza tamanho G de massa tradicional e com borda de catupiry.\",\n  \"image\": \"img.siteimgs/pizza01.jpg\",\n  \"category\": \"salgada\",\n  \"size\": {\n    \"_id\": \"66e6d36529f4f7aee9977809\"\n  },\n  \"dough\": {\n    \"_id\": \"66e6d19e29f4f7aee99777f6\"\n  },\n  \"crust\": {\n    \"_id\": \"66e6ce2f68a43542342e9038\"\n  },\n  \"flavors\": [\n      {\"_id\": \"66e6d83219c5bc5d85c9eef2\"},\n      {\"_id\": \"66e6d83219c5bc5d85c9eef3\"}\n    ],\n  \"available\": true\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "d587bc31-3031-4111-974b-8bd1bba617d6",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "aab82d65-3617-47ea-81f1-7110a07dbe9d",
+            "name": "create",
+            "url": "/sideDish/create",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-09-17T11:12:07.756Z",
+            "modified": "2024-09-17T11:12:07.756Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "[\n  {\n    \"name\": \"Mousse de Chocolate\",\n    \"description\": \"Deliciosa e cremosa sobremesa para o paladar.\",\n    \"image\": \"img.siteimgs/agua01.jpg\",\n    \"price\": 16.9,\n    \"category\": \"dessert\"\n  }\n]",
+                "form": []
+            }
+        },
+        {
+            "_id": "6548f41f-dea9-46dc-a245-5013d246de9d",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "774ff813-cf54-4635-b88d-5ee597177f7c",
+            "name": "update",
+            "url": "/pizza/update/66e603f7b4f80e4531263722",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2024-09-17T11:01:18.814Z",
+            "modified": "2024-09-17T11:01:18.814Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "  {\n    \"name\": \"Calabresa\",\n    \"description\": \"Saborosa e tradicional pizza de calabrasa defumada e apimentada.\",\n    \"image\": \"img.siteimgs/pizza01.jpg\",\n    \"category\": \"salgada\"\n  }",
+                "form": []
+            }
+        },
+        {
+            "_id": "c2a7f6c0-5f0a-4ade-a036-383f0b8fa3bf",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "aab82d65-3617-47ea-81f1-7110a07dbe9d",
+            "name": "update",
+            "url": "/sideDish/update/66e8b220df8bdb505eaa4b0b",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2024-09-17T11:12:07.756Z",
+            "modified": "2024-09-17T11:12:07.756Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "[\n  {\n    \"name\": \"Mousse au Chocolat\",\n    \"description\": \"Deliciosa e cremosa sobremesa para o paladar.\",\n    \"image\": \"img.siteimgs/agua01.jpg\",\n    \"price\": 16.9,\n    \"category\": \"dessert\"\n  }\n]",
+                "form": []
+            }
+        },
+        {
+            "_id": "4c768f45-ada8-4e82-8a0d-63a0d17e2e27",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "774ff813-cf54-4635-b88d-5ee597177f7c",
+            "name": "updateAvailability",
+            "url": "/pizza/updateAvailability/66e603f7b4f80e4531263722",
+            "method": "PATCH",
+            "sortNum": 50000,
+            "created": "2024-09-17T11:01:18.814Z",
+            "modified": "2024-09-17T11:01:18.814Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"available\": false\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "93cfaadb-9078-49d4-9cf3-1e4ddc7fcf42",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "aab82d65-3617-47ea-81f1-7110a07dbe9d",
+            "name": "updateAvailability",
+            "url": "/sideDish/updateAvailability/66e603f7b4f80e4531263722",
+            "method": "PATCH",
+            "sortNum": 50000,
+            "created": "2024-09-17T11:12:07.756Z",
+            "modified": "2024-09-17T11:12:07.756Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"available\": false\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "2eab6f61-4c19-4ce1-84c5-545f45ef8617",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "774ff813-cf54-4635-b88d-5ee597177f7c",
+            "name": "remove",
+            "url": "/pizza/remove/66e6c9eba8b647ce85d8b27b",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2024-09-17T11:01:18.814Z",
+            "modified": "2024-09-17T11:01:18.814Z",
+            "headers": []
+        },
+        {
+            "_id": "4fb7b287-5a1e-47f4-9b85-a63296bbe215",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "aab82d65-3617-47ea-81f1-7110a07dbe9d",
+            "name": "remove",
+            "url": "/sideDish/remove/66e6c9eba8b647ce85d8b27b",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2024-09-17T11:12:07.756Z",
+            "modified": "2024-09-17T11:12:07.756Z",
+            "headers": []
+        },
+        {
+            "_id": "0e526d1a-d489-4860-8bbe-fc1898b38d6d",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "8423f28e-2539-4aba-8cc2-d51e63b1f74f",
+            "name": "findById",
+            "url": "/pizza/crust/findById/66e6ce2f68a43542342e9040",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2024-09-17T11:01:24.109Z",
+            "modified": "2024-09-17T11:01:24.109Z",
+            "headers": []
+        },
+        {
+            "_id": "b5169dfd-04df-4cd0-b96b-6c45c4942423",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "8423f28e-2539-4aba-8cc2-d51e63b1f74f",
+            "name": "findAll",
+            "url": "/pizza/crust/findAll",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2024-09-17T11:01:24.109Z",
+            "modified": "2024-09-17T11:01:24.109Z",
+            "headers": []
+        },
+        {
+            "_id": "b93e5f5b-01b7-45e5-8948-421aaefef98d",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "8423f28e-2539-4aba-8cc2-d51e63b1f74f",
+            "name": "create",
+            "url": "/pizza/crust/create",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2024-09-17T11:01:24.109Z",
+            "modified": "2024-09-17T11:01:24.109Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "[\n  {\n    \"name\": \"Tradicional\",\n    \"price\": 0\n  }\n]",
+                "form": []
+            }
+        },
+        {
+            "_id": "c34ad30e-809f-4766-b755-93a295122270",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "8423f28e-2539-4aba-8cc2-d51e63b1f74f",
+            "name": "update",
+            "url": "/pizza/crust/update/66e6cf3968a43542342e9049",
+            "method": "PUT",
+            "sortNum": 110000,
+            "created": "2024-09-17T11:01:24.109Z",
+            "modified": "2024-09-17T11:01:24.109Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Borda de Gouda\",\n  \"price\": 20.45\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "bbddf250-cdc9-4fdb-a1e9-5856c447c2d9",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "8423f28e-2539-4aba-8cc2-d51e63b1f74f",
+            "name": "updateAvailability",
+            "url": "/pizza/crust/updateAvailability/66e6cf3968a43542342e9049",
+            "method": "PATCH",
+            "sortNum": 120000,
+            "created": "2024-09-17T11:01:24.109Z",
+            "modified": "2024-09-17T11:01:24.109Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"available\": false\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "a67cc0f7-3ac1-4b4b-9bca-c3415d3e8b09",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "8423f28e-2539-4aba-8cc2-d51e63b1f74f",
+            "name": "remove",
+            "url": "/pizza/crust/remove/66e6ce2f68a43542342e903b",
+            "method": "DELETE",
+            "sortNum": 130000,
+            "created": "2024-09-17T11:01:24.109Z",
+            "modified": "2024-09-17T11:01:24.109Z",
+            "headers": []
+        },
+        {
+            "_id": "318e731b-5ea5-4554-9e6d-45c1a7c8aa6c",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "b7e27684-af40-46a5-9aaa-320ca41bf073",
+            "name": "findById",
+            "url": "/pizza/dough/findById/66e6d19e29f4f7aee99777f6",
+            "method": "GET",
+            "sortNum": 140000,
+            "created": "2024-09-17T11:01:35.208Z",
+            "modified": "2024-09-17T11:01:35.208Z",
+            "headers": []
+        },
+        {
+            "_id": "9fff4a4d-dff5-44a6-96d7-932e3889674a",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "b7e27684-af40-46a5-9aaa-320ca41bf073",
+            "name": "findAll",
+            "url": "/pizza/dough/findAll",
+            "method": "GET",
+            "sortNum": 150000,
+            "created": "2024-09-17T11:01:35.208Z",
+            "modified": "2024-09-17T11:01:35.208Z",
+            "headers": []
+        },
+        {
+            "_id": "59562faa-1862-4491-a442-c4c83d080f95",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "b7e27684-af40-46a5-9aaa-320ca41bf073",
+            "name": "create",
+            "url": "/pizza/dough/create",
+            "method": "POST",
+            "sortNum": 160000,
+            "created": "2024-09-17T11:01:35.208Z",
+            "modified": "2024-09-17T11:01:35.208Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "[\n  {\n    \"name\": \"Tradicional\",\n    \"price\": 12.99\n  },\n  {\n    \"name\": \"Integral\",\n    \"price\": 15.99\n  },\n  {\n    \"name\": \"Pan\",\n    \"price\": 14.99\n  }\n]",
+                "form": []
+            }
+        },
+        {
+            "_id": "b3dedd25-08b9-4f0e-8444-bf585c24c823",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "b7e27684-af40-46a5-9aaa-320ca41bf073",
+            "name": "update",
+            "url": "/pizza/dough/update/66e6d19e29f4f7aee99777f8",
+            "method": "PUT",
+            "sortNum": 170000,
+            "created": "2024-09-17T11:01:35.208Z",
+            "modified": "2024-09-17T11:01:35.208Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Pizza Pan\",\n  \"price\": 15.99\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "57222f19-8dbb-4306-ae52-f593e6a521fd",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "b7e27684-af40-46a5-9aaa-320ca41bf073",
+            "name": "updateAvailability",
+            "url": "/pizza/dough/updateAvailability/66e6d19e29f4f7aee99777f8",
+            "method": "PATCH",
+            "sortNum": 180000,
+            "created": "2024-09-17T11:01:35.208Z",
+            "modified": "2024-09-17T11:01:35.208Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"available\": false\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "ea7f5c25-329f-4338-8f1f-ca45b016cf8e",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "b7e27684-af40-46a5-9aaa-320ca41bf073",
+            "name": "remove",
+            "url": "/pizza/dough/remove/66e6d19e29f4f7aee99777f8",
+            "method": "DELETE",
+            "sortNum": 190000,
+            "created": "2024-09-17T11:01:35.208Z",
+            "modified": "2024-09-17T11:01:35.208Z",
+            "headers": []
+        },
+        {
+            "_id": "c5e495a1-30cd-478a-a433-129350d734c4",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "316258df-a82b-43dc-88dd-93b5569f5720",
+            "name": "findById",
+            "url": "/pizza/size/findById/113",
+            "method": "GET",
+            "sortNum": 200000,
+            "created": "2024-09-17T11:01:38.250Z",
+            "modified": "2024-09-17T11:01:38.250Z",
+            "headers": []
+        },
+        {
+            "_id": "2a8648a6-fa8d-427a-a293-3f92ffd5ce8d",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "316258df-a82b-43dc-88dd-93b5569f5720",
+            "name": "findAll",
+            "url": "/pizza/size/findAll",
+            "method": "GET",
+            "sortNum": 210000,
+            "created": "2024-09-17T11:01:38.250Z",
+            "modified": "2024-09-17T11:01:38.250Z",
+            "headers": []
+        },
+        {
+            "_id": "a6aba74a-208c-4414-8779-1eefc374182a",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "316258df-a82b-43dc-88dd-93b5569f5720",
+            "name": "create",
+            "url": "/pizza/size/create",
+            "method": "POST",
+            "sortNum": 220000,
+            "created": "2024-09-17T11:01:38.250Z",
+            "modified": "2024-09-17T11:01:38.250Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "[\n  {\n    \"name\": \"Brotinho\",\n    \"price\": 3.99\n  }\n]",
+                "form": []
+            }
+        },
+        {
+            "_id": "acc3e013-112b-40d7-bf9f-ff90ce6e3613",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "316258df-a82b-43dc-88dd-93b5569f5720",
+            "name": "update",
+            "url": "/pizza/size/update/66e6d39329f4f7aee997780e",
+            "method": "PUT",
+            "sortNum": 230000,
+            "created": "2024-09-17T11:01:38.250Z",
+            "modified": "2024-09-17T11:01:38.250Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Individual\",\n  \"price\": 2.99\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "91b0d81d-cab8-4fc2-8436-89995f5d7da4",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "316258df-a82b-43dc-88dd-93b5569f5720",
+            "name": "updateAvailability",
+            "url": "/pizza/size/updateAvailability/66e6d3c929f4f7aee9977811",
+            "method": "PATCH",
+            "sortNum": 240000,
+            "created": "2024-09-17T11:01:38.250Z",
+            "modified": "2024-09-17T11:01:38.250Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"available\": false\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "6bd7ea0c-a51b-4007-a6b5-525f639c20c0",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "316258df-a82b-43dc-88dd-93b5569f5720",
+            "name": "remove",
+            "url": "/pizza/size/remove/66e6d3c929f4f7aee9977811",
+            "method": "DELETE",
+            "sortNum": 250000,
+            "created": "2024-09-17T11:01:38.250Z",
+            "modified": "2024-09-17T11:01:38.250Z",
+            "headers": []
+        },
+        {
+            "_id": "c166d866-5cc6-4208-90a2-145854a0f3cf",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "2e24aea8-98c6-4767-99cc-6beb304c4018",
+            "name": "findById",
+            "url": "/pizza/flavor/findById/66e6d83219c5bc5d85c9eef3",
+            "method": "GET",
+            "sortNum": 260000,
+            "created": "2024-09-17T11:01:50.802Z",
+            "modified": "2024-09-17T11:01:50.802Z",
+            "headers": []
+        },
+        {
+            "_id": "886dbfa1-d4a6-45a7-bd9d-845d6104429c",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "2e24aea8-98c6-4767-99cc-6beb304c4018",
+            "name": "findAll",
+            "url": "/pizza/flavor/findAll",
+            "method": "GET",
+            "sortNum": 270000,
+            "created": "2024-09-17T11:01:50.802Z",
+            "modified": "2024-09-17T11:01:50.802Z",
+            "headers": []
+        },
+        {
+            "_id": "7561f43e-9fdc-4319-b050-f2d28a9941b3",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "2e24aea8-98c6-4767-99cc-6beb304c4018",
+            "name": "create",
+            "url": "/pizza/flavor/create",
+            "method": "POST",
+            "sortNum": 280000,
+            "created": "2024-09-17T11:01:50.802Z",
+            "modified": "2024-09-17T11:01:50.802Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "[\n  {\n    \"flavor\": \"Alho Dourado\",\n    \"description\": \"Molho de tomate artesanal, queijo mozzarella, lâminas de alho e orégano\",\n    \"price\": 22.90\n  },\n  {\n    \"flavor\": \"Atum\",\n    \"description\": \"Molho de tomate artesanal, queijo mozzarella, cebola, orégano, azeitona e atum\",\n    \"price\": 22.90\n  },\n  {\n    \"flavor\": \"Atum com Catupiry\",\n    \"description\": \"Molho de tomate artesanal, queijo mozzarella, cebola, orégano, azeitona, atum e catupiry\",\n    \"price\": 22.90\n  },  \n  {\n    \"flavor\": \"Bacon\",\n    \"description\": \"Molho de tomate artesanal, queijo mozzarella, cebola, orégano, calabresa ralada, bacon e raspas de limão\",\n    \"price\": 23.90\n  },\n  {\n    \"flavor\": \"Baiana\",\n    \"description\": \"Molho de tomate artesanal, queijo mozzarella, cebola, orégano, azeitona preta, presunto e catupiry\",\n    \"price\": 27.90\n  },\n  {\n    \"flavor\": \"Brie com Geleia de Pimenta\",\n    \"description\": \"Molho de tomate artesanal, queijo mozzarella, queijo brie e geleia de pimenta\",\n    \"price\": 30.90\n  },\n  {\n    \"flavor\": \"Calabresa\",\n    \"description\": \"Molho de tomate artesanal, queijo mozzarella, cebola, orégano e calabresa\",\n    \"price\": 18.90\n  },\n  {\n    \"flavor\": \"Calabresa com catupiry\",\n    \"description\": \"Molho de tomate artesanal, queijo mozzarella, cebola, orégano. calabresa e catupiry\",\n    \"price\": 21.90\n  },  \n  {\n    \"flavor\": \"Camarão\",\n    \"description\": \"Molho de tomate artesanal, queijo mozzarella, cebola, orégano, azeitona e camarão\",\n    \"price\": 30.90\n  }\n]",
+                "form": []
+            }
+        },
+        {
+            "_id": "3fe9dd9c-5eea-405a-a2c7-ce447f8849a5",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "2e24aea8-98c6-4767-99cc-6beb304c4018",
+            "name": "update",
+            "url": "/pizza/flavor/update/66e6d83219c5bc5d85c9eef3",
+            "method": "PUT",
+            "sortNum": 290000,
+            "created": "2024-09-17T11:01:50.802Z",
+            "modified": "2024-09-17T11:01:50.802Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":  \"Camarão\",\n   \"description\": \"Molho de tomate artesanal, queijo mozzarella, cebola, orégano, azeitona e camarão\",\n  \"price\": 31.9\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "94dea679-b5d2-4a93-a6fd-f73898deccef",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "2e24aea8-98c6-4767-99cc-6beb304c4018",
+            "name": "updateAvailability",
+            "url": "/pizza/flavor/updateAvailability/66e6d83219c5bc5d85c9eef3",
+            "method": "PATCH",
+            "sortNum": 300000,
+            "created": "2024-09-17T11:01:50.802Z",
+            "modified": "2024-09-17T11:01:50.802Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"available\": false\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "1bf32ef7-babc-4c01-84e2-6dcd49b6248c",
+            "colId": "2ab2cac3-4bf5-4fd4-88d3-3d2bac92673c",
+            "containerId": "2e24aea8-98c6-4767-99cc-6beb304c4018",
+            "name": "remove",
+            "url": "/pizza/flavor/remove/66e6d83219c5bc5d85c9eeef",
+            "method": "DELETE",
+            "sortNum": 310000,
+            "created": "2024-09-17T11:01:50.802Z",
+            "modified": "2024-09-17T11:01:50.802Z",
+            "headers": []
+        }
+    ],
+    "settings": {
+        "auth": {
+            "type": "bearer",
+            "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTcyYzVlNGU0OTY1YTIzNmRiM2ZlZiIsImlhdCI6MTcyNjU4MzE4MywiZXhwIjoxNzI2NjY5NTgzfQ.zcm2HGoaLC5AB5S7b_ocvm8QkfJidoaMvQNARiSalXI"
+        },
+        "options": {
+            "baseUrl": "http://localhost:3000"
+        }
+    },
+    "ref": "CpiIQ12t28ax203h-E_8b-DoPKkJnA-MLB2fDqc6BkIskGUvtOSgzJI9e3EGyk_DqL4mKpkk6ivxgeW6LQDREg"
+}
