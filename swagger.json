@@ -1,0 +1,190 @@
+{
+    "openapi":"3.1.0",
+    "info": {
+        "title": "API Pizzaria-NodeJS",
+        "description": "API de pizzaria completa contendo o CRUD para variados assuntos.",
+        "contact": {
+            "name": "Felipe Magalhães",
+            "email": "felipemagalhaes@alunounyleya.com.br"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:3000",
+            "description": "API e teste local"
+        }
+    ],
+    "paths": {
+
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        },
+        "schemas": {
+            "cart": {
+                "type": "object",
+                "properties": {
+                    "products": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "_id": {"type": "string"},
+                                "quantity": {"type": "integer"}
+                            }
+                        }
+                    },
+                    "voucher": {"type": "string"},
+                    "zipcode": {"type": "string"},
+                    "userId": {"type": "string"},
+                    "createAt": {"type": "string"}
+                }
+            },
+            "order": {
+                "type": "object",
+                "properties": {
+                    "cart": {"type": "string"},
+                    "products": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "_id": {"type": "string"},
+                                "quantity": {"type": "integer"}
+                            }
+                        }
+                    },
+                    "price": {
+                        "type": "object",
+                        "properties": {
+                            "totalPrice": {"type": "integer"},
+                            "voucher": {"type": "string"},
+                            "discount": {"type": "integer"},
+                            "finalPrice": {"type": "integer"}
+                        }
+                    },
+                    "shipping": {"type": "integer"},
+                    "deliveryAddress": {
+                        "type": "object",
+                        "properties": {
+                            "street": {"type": "string"},
+                            "number": {"type": "integer"},
+                            "complement": {"type": "string"},
+                            "zipcode": {"type": "integer"}
+                        }
+                    },
+                    "payment": {
+                        "type": "object",
+                        "properties": {
+                            "method": {"type": "string"},
+                            "information": {"type": "string"},
+                            "approved": {"type": "boolean"}
+                        }
+                    },
+                    "userId": {"type": "string"},
+                    "status": {"type": "string"},
+                    "createAt": {"type": "string"}
+                }
+            },
+            "pizza": {
+                "type": "object",
+                "properties": {
+                    "name": {"type": "string"},
+                    "description": {"type": "string"},
+                    "image": {"type": "string"},
+                    "category": {"type": "string"},
+                    "size": {"type": "string"},
+                    "dough": {"type": "string"},
+                    "crust": {"type": "string"},
+                    "flavors": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "_id": {"type": "string"},
+                                "quantity": {"type": "integer"}
+                            }
+                        }
+                    },
+                    "public": {"type": "boolean"},
+                    "available": {"type": "boolean"},
+                    "authorId": {"type": "string"},
+                    "createAt": {"type": "string"}
+                }
+            },
+            "pizzacrust": {
+                "type": "object",
+                "properties": {
+                    "name": {"type": "string"},
+                    "price": {"type": "string"},
+                    "available": {"type": "boolean"},
+                    "createdAt": {"type": "string"}
+                }
+            },
+            "pizzadough": {
+                "type": "object",
+                "properties": {
+                    "name": {"type": "string"},
+                    "price": {"type": "string"},
+                    "available": {"type": "boolean"},
+                    "createdAt": {"type": "string"}
+                }
+            },
+            "pizzaflavor": {
+                "type": "object",
+                "properties": {
+                    "flavor": {"type": "string"},
+                    "description": {"type": "string"},
+                    "price": {"type": "string"},
+                    "available": {"type": "boolean"},
+                    "createdAt": {"type": "string"}
+                }
+            },
+            "pizzasize": {
+                "type": "object",
+                "properties": {
+                    "name": {"type": "string"},
+                    "price": {"type": "string"},
+                    "available": {"type": "boolean"},
+                    "createdAt": {"type": "string"}
+                }
+            },
+            "user": {
+                "type": "object", 
+                "properties": {
+                    "name": {"type": "string"},
+                    "email": {"type": "string"},
+                    "password": {"type": "string"},
+                    "image": {"type": "string"},
+                    "address": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "_id": {"type": "string"},
+                                "street": {"type": "string"},
+                                "number": {"type": "integer"},
+                                "complement": {"type": "string"},
+                                "zipcode": {"type": "string"},
+                                "createdAt": {"type": "string"}
+                            }
+                        }
+                    },
+                    "favorite_products": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "_id": {"type": "string"},
+                                "createdAt": {"type": "string"}
+                            }
+                        }
+                    },
+                    "createdAt": {"type": "string"},
+                    "admin": {"type": "boolean"}
+                }
+            }
+        }
+    }
+}

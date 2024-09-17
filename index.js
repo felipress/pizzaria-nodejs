@@ -27,6 +27,7 @@ const pizzaSizeRoutes = require("./src/router/pizzaSize.router")
 const sideDishRoutes = require("./src/router/sideDish.router")
 const cartRoutes = require("./src/router/cart.router")
 const orderRoutes = require("./src/router/order.router")
+const docsRoutes = require("./src/router/docs.router")
 
 // ROUTES CALLING
 app.use("/auth", authRoutes)
@@ -39,6 +40,7 @@ app.use("/pizza/size", pizzaSizeRoutes)
 app.use("/sideDish", sideDishRoutes)
 app.use("/cart", cartRoutes)
 app.use("/order", orderRoutes)
+app.use("/docs", docsRoutes)
 
 // SERVER START
 app.listen(port, () => {
