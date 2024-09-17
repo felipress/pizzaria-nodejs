@@ -73,7 +73,12 @@ const createOrder = async (req, res) => {
 
 const updateStatus = async (req, res) => {
     try{
-
+        const {status} = req.body
+        const order = await orderService.updateStatus(req.params.id, status)
+        return res.status(200).send({
+            message: `Pedido atualizado sucesso.`,
+            details: order
+        })
     }
     catch(err){
         console.log(`Erro: ${err.message}`)

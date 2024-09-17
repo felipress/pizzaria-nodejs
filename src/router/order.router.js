@@ -9,6 +9,6 @@ router.get("/findById/:id", auth, validateIdParams, orderController.findOrderByI
 router.get("/find", auth, orderController.findAllOrders)
 router.get("/findAll", auth, adminUser, orderController.findAllUsersOrders)
 router.post("/create", orderController.createOrder)
-router.patch("/updateStatus", orderController.updateStatus)
+router.patch("/updateStatus/:id", orderController.updateStatus)
 
 module.exports = router
