@@ -16,7 +16,403 @@
         }
     ],
     "paths": {
-
+        "/auth/login": {
+            "get": {
+                "summary": "Autentica usuários na API.",
+                "description": "Rota reponsável por realizar a autenticação de todos usuários na API retornando seu Token.",
+                "tags": ["Auth"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/components/schemas/user"
+                        },
+                        "name": "body"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "email": {"type": "string"},
+                                        "token": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "UNAUTHORIZED, erro de autenticação ou problemas com token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/findAll": {
+            "get": {
+                "security": [
+                    {"bearerAuth": []}
+                ],
+                "summary": "Lista todos os usuários.",
+                "description": "Rota responsável por lista todos os usuários da API.",
+                "tags": ["User"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "limit"
+                    },
+                    {
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "offset"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/user"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "UNAUTHORIZED, erro de autenticação ou problemas com token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND, nenhum usuário encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/findById/{id}": {
+            "get": {
+                "security": [
+                    {"bearerAuth": []}
+                ],
+                "summary": "Lista o usuário informado pelo ID.",
+                "description": "Rota responsável por listar um único usuário pelo ID informado na requisição.",
+                "tags": ["User"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "id" 
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/user"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "UNAUTHORIZED, erro de autenticação ou problemas com token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND, nenhum usuário encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/create": {
+            "post": {
+                "summary": "Cria um novo usuário",
+                "description": "Rota reponsável pela criação de novos usuários na API.",
+                "tags": ["User"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/user"
+                        },
+                        "name": "body" 
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "CREATE, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/user"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/update/{id}": {
+            "put": {
+                "security": [
+                    {"bearerAuth": []}
+                ],
+                "summary": "Atualiza o usuário informado pelo ID.",
+                "description": "Rota responsável por atualizar as informações de usuário.",
+                "tags": ["User"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "id" 
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/user"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "UNAUTHORIZED, erro de autenticação ou problemas com token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/remove/{id}": {
+            "delete": {
+                "security": [
+                    {"bearerAuth": []}
+                ],
+                "summary": "Remove o usuário informado pelo ID.",
+                "description": "Rota responsável por remover um único usuário pelo ID informado na requisição.",
+                "tags": ["User"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "id" 
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/user"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "UNAUTHORIZED, erro de autenticação ou problemas com token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND, nenhum usuário encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     },
     "components": {
         "securitySchemes": {
@@ -158,7 +554,7 @@
                     "name": {"type": "string"},
                     "email": {"type": "string"},
                     "password": {"type": "string"},
-                    "image": {"type": "string"},
+                    "birthday": {"type": "string"},
                     "address": {
                         "type": "array",
                         "items": {
@@ -172,17 +568,8 @@
                             }
                         }
                     },
-                    "favorite_products": {
-                        "type": "array",
-                        "items": {
-                            "properties": {
-                                "_id": {"type": "string"},
-                                "createdAt": {"type": "string"}
-                            }
-                        }
-                    },
                     "createdAt": {"type": "string"},
-                    "admin": {"type": "boolean"}
+                    "adminUser": {"type": "boolean"}
                 }
             }
         }
