@@ -1,8 +1,9 @@
-const PizzaService = require("../service/pizza.service")
+const pizzaService = require("../service/pizza.service")
+const userService = require("../service/user.service")
 
 const findPizzaById = async (req, res) => {
     try{
-        const pizza = await PizzaService.findPizzaById(req.params.id)
+        const pizza = await pizzaService.findPizzaById(req.params.id)
         if(!pizza){
             return res.status(404).send({
                 message: `Nenhum resultado foi encontrado.`
@@ -18,9 +19,13 @@ const findPizzaById = async (req, res) => {
     }
 }
 
+/*
+    This function returns only public pizzas.
+    Public pizzas are created by adminUsers
+*/
 const findAllPizzas = async (req, res) => {
     try{
-        const pizzas = await PizzaService.findAllPizzas(req.query.limit, req.query.offset)
+        const pizzas = await pizzaService.findAllPizzas(req.query.limit, req.query.offset)
         return res.status(200).send(pizzas)
     }
     catch(err){
@@ -33,7 +38,14 @@ const findAllPizzas = async (req, res) => {
 
 const createPizza = async (req, res) => {
     try{
-        const pizza = await PizzaService.createPizza(req.body)
+        const user = await userService.findUserById(req.userId)
+        let body = {
+            ...req.body
+        }
+        if(user.adminUser){
+            body.public = "public"
+        }
+        const pizza = await pizzaService.createPizza(body)
         return res.status(201).send(pizza)
     }
     catch(err){
@@ -46,7 +58,7 @@ const createPizza = async (req, res) => {
 
 const updatePizza = async (req, res) => {
     try{
-        const pizza = await PizzaService.updatePizza(req.params.id, req.body)
+        const pizza = await pizzaService.updatePizza(req.params.id, req.body)
         return res.status(200).send(pizza)
     }
     catch(err){
@@ -60,7 +72,7 @@ const updatePizza = async (req, res) => {
 const updateAvailability = async (req, res) => {
     try{
         const {available} = req.body
-        const pizza = await PizzaService.updateAvailability(req.params.id, available)
+        const pizza = await pizzaService.updateAvailability(req.params.id, available)
         return res.status(200).send(pizza)
     }
     catch(err){
@@ -73,7 +85,7 @@ const updateAvailability = async (req, res) => {
 
 const removePizza = async (req, res) => {
     try{
-        const pizza = await PizzaService.removePizza(req.params.id)
+        const pizza = await pizzaService.removePizza(req.params.id)
         return res.status(200).send(pizza)
     }
     catch(err){

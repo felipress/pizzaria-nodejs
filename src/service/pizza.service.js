@@ -5,7 +5,7 @@ const findPizzaById = (id) => {
 }
 
 const findAllPizzas = (limit, offset) => {
-    return Pizza.find().limit(limit).skip(offset)
+    return Pizza.find({public: true}).limit(limit).skip(offset)
 }
 
 const createPizza = (body) => {
