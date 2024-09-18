@@ -2,7 +2,7 @@
     "clientName": "Thunder Client",
     "collectionName": "Pizzaria-NodeJS",
     "collectionId": "b76a0c0c-49d6-458f-9dc3-fc1564f47f26",
-    "dateExported": "2024-09-17T15:52:49.438Z",
+    "dateExported": "2024-09-18T00:07:27.612Z",
     "version": "1.2",
     "folders": [
         {
@@ -85,11 +85,11 @@
             "method": "POST",
             "sortNum": 160000,
             "created": "2024-09-15T18:40:10.252Z",
-            "modified": "2024-09-15T18:50:33.265Z",
+            "modified": "2024-09-17T22:11:07.480Z",
             "headers": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"name\": \"Felipe Magalhães\",\n  \"email\": \"felipemagalhaes@unyleya.com.br\",\n  \"password\": \"12345678\",\n  \"birthday\": \"1995-01-02\"\n}",
+                "raw": "{\r\n  \"name\": \"Gus\",\r\n  \"email\": \"gus@gmail.com\",\r\n  \"password\": \"12345678\",\r\n  \"birthday\": \"2000-09-17\",\r\n  \"address\": [\r\n    {\r\n      \"street\": \"Rua ABC\",\r\n      \"number\": 12,\r\n      \"complement\": \"Street Zero\",\r\n      \"zipcode\": \"10200-201\"\r\n    }\r\n  ],\r\n  \"adminUser\": false\r\n}",
                 "form": []
             }
         },
@@ -135,44 +135,6 @@
             "headers": []
         },
         {
-            "_id": "a0bb77f5-ab22-4a1e-a8ac-277670cafbd9",
-            "colId": "b76a0c0c-49d6-458f-9dc3-fc1564f47f26",
-            "containerId": "0a2e22a8-1459-43ad-af3f-d6e93142f057",
-            "name": "addFavoriteProduct",
-            "url": "/user/addFavoriteProduct/66df0335ca28ad00bd2c84d5",
-            "method": "POST",
-            "sortNum": 200000,
-            "created": "2024-09-15T18:40:10.252Z",
-            "modified": "2024-09-15T18:40:10.252Z",
-            "headers": [],
-            "body": {
-                "type": "json",
-                "raw": "{\n  \"id\": \"66dcdd83c8af160c709b3d42\"\n}",
-                "form": []
-            }
-        },
-        {
-            "_id": "d2ff9a15-c726-4d86-a696-ae6aeec4abee",
-            "colId": "b76a0c0c-49d6-458f-9dc3-fc1564f47f26",
-            "containerId": "0a2e22a8-1459-43ad-af3f-d6e93142f057",
-            "name": "removeFavoriteProduct",
-            "url": "{{hostname}}/user/removeFavoriteProduct/66df0335ca28ad00bd2c84d5",
-            "method": "DELETE",
-            "sortNum": 205000,
-            "created": "2024-09-15T18:40:10.252Z",
-            "modified": "2024-09-15T18:40:10.252Z",
-            "headers": [],
-            "body": {
-                "type": "json",
-                "raw": "{\n  \"id\": \"66dcdd83c8af160c709b3d42\"\n}",
-                "form": []
-            },
-            "auth": {
-                "type": "bearer",
-                "bearer": "{{token}}"
-            }
-        },
-        {
             "_id": "fe7ae81e-a163-4930-9f24-714af50adc06",
             "colId": "b76a0c0c-49d6-458f-9dc3-fc1564f47f26",
             "containerId": "0a2e22a8-1459-43ad-af3f-d6e93142f057",
@@ -194,17 +156,12 @@
             "colId": "b76a0c0c-49d6-458f-9dc3-fc1564f47f26",
             "containerId": "0a2e22a8-1459-43ad-af3f-d6e93142f057",
             "name": "removeAddress",
-            "url": "/user/removeAddress/",
+            "url": "/user/removeAddress/19219312",
             "method": "DELETE",
             "sortNum": 210000,
             "created": "2024-09-15T18:40:10.252Z",
-            "modified": "2024-09-15T18:40:10.252Z",
-            "headers": [],
-            "body": {
-                "type": "json",
-                "raw": "{\n  \"id\": \"66df052b2801fa5a3f05bacf\"\n}",
-                "form": []
-            }
+            "modified": "2024-09-17T23:13:15.362Z",
+            "headers": []
         },
         {
             "_id": "0aca07ce-3ed9-4295-aa58-192726776189",
@@ -344,5 +301,5 @@
             "baseUrl": "http://localhost:3000"
         }
     },
-    "ref": "Guop77u5preEcqFJ7sHm5xzYKpTYe5H_x5FrWM24QiX_KmmUOxO-HK-SbLlZOufwTVwRCfATONhDSMDkq2Q97Q"
+    "ref": "Guop77u5preEcqFJ7sHm56tKretA9_gJ4ksjF8fyj65C-Q46lNOfqjv3vUVbPXKJuvi4hcDHPZh5-NMQ5Ahdqw"
 }
