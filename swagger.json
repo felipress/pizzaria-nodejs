@@ -17,7 +17,7 @@
     ],
     "paths": {
         "/auth/login": {
-            "get": {
+            "post": {
                 "summary": "Autentica usuários na API.",
                 "description": "Rota reponsável por realizar a autenticação de todos usuários na API retornando seu Token.",
                 "tags": ["Auth"],
@@ -25,7 +25,10 @@
                     {
                         "in": "body",
                         "schema": {
-                            "$ref": "#/components/schemas/user"
+                            "properties": {
+                                "email": {"type": "string"},
+                                "password": {"type": "string"}
+                            }
                         },
                         "name": "body"
                     }
@@ -40,6 +43,19 @@
                                     "properties": {
                                         "email": {"type": "string"},
                                         "token": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "BAD REQUEST, erro na solicitação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
                                     }
                                 }
                             }
@@ -260,6 +276,19 @@
                             }
                         }
                     },
+                    "400": {
+                        "description": "BAD REQUREST, a requisição foi encaminhada errada ou campos obrigatórios estão omissos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "500": {
                         "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
                         "content": {
@@ -292,6 +321,14 @@
                             "type": "string"
                         },
                         "name": "id" 
+                    },
+                    {
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/user"
+                        },
+                        "name": "body" 
                     }
                 ],
                 "responses": {
@@ -366,6 +403,1666 @@
                                     "items": {
                                         "type": "object",
                                         "$ref": "#/components/schemas/user"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "UNAUTHORIZED, erro de autenticação ou problemas com token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND, nenhum usuário encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/addAddress/{id}": {
+            "post": {
+                "summary": "Cria um novo endereço para um usuário",
+                "description": "Rota reponsável pela criação de novos endereços para usuários na API.",
+                "tags": ["User"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "id" 
+                    },
+                    {
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "street": "string",
+                            "number": "integer",
+                            "complement": "string",
+                            "zipcode": "string",
+                            "createdAt": "string"
+                        },
+                        "name": "body" 
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "CREATE, endereço adicionado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/user"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "BAD REQUREST, a requisição foi encaminhada errada ou campos obrigatórios estão omissos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/removeAddress/{id}": {
+            "delete": {
+                "security": [
+                    {"bearerAuth": []}
+                ],
+                "summary": "Remove um endereço do usuário informado pelo ID.",
+                "description": "Rota responsável por remover um único usuário pelo ID informado na requisição.",
+                "tags": ["User"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "id" 
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, endereço removido com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/user"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "UNAUTHORIZED, erro de autenticação ou problemas com token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND, nenhum usuário encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cart/findAll": {
+            "get": {
+                "security": [
+                    {"bearerAuth": []}
+                ],
+                "summary": "Lista todos os carrinhos.",
+                "description": "Rota responsável por listar todos os carrinhos criados por usuários da API. Esta rota está disponível somente para administradores.",
+                "tags": ["Cart"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "limit"
+                    },
+                    {
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "offset"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/cart"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "UNAUTHORIZED, erro de autenticação ou problemas com token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND, nenhum usuário encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cart/findById/{id}": {
+            "get": {
+                "summary": "Lista o carrinho informado pelo ID.",
+                "description": "Rota responsável por listar um único carrinho de compras pelo ID informado na requisição.",
+                "tags": ["Cart"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "id" 
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/user"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND, nenhum item encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cart/create": {
+            "post": {
+                "summary": "Cria um novo carrinho para um usuário",
+                "description": "Rota reponsável pela criação de novos carrinhos de compras na API.",
+                "tags": ["Cart"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/cart"
+                        },
+                        "name": "body" 
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "CREATE, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/cart"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "BAD REQUREST, a requisição foi encaminhada errada ou campos obrigatórios estão omissos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cart/update/{id}": {
+            "put": {
+                "summary": "Atualiza o carrinho informado pelo ID.",
+                "description": "Rota responsável por atualizar as informações de um carrinho.",
+                "tags": ["Cart"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "id" 
+                    },
+                    {
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/cart"
+                        },
+                        "name": "body" 
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/cart"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "UNAUTHORIZED, erro de autenticação ou problemas com token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cart/remove/{id}": {
+            "delete": {
+                "summary": "Remove o carrinho informado pelo ID.",
+                "description": "Rota responsável por remover um único carrinho de compras pelo ID informado na requisição.",
+                "tags": ["Cart"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "id" 
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/user"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "UNAUTHORIZED, erro de autenticação ou problemas com token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND, nenhum usuário encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/order/find": {
+            "get": {
+                "security": [
+                    {"bearerAuth": []}
+                ],
+                "summary": "Lista todos os pedidos do usuário logado",
+                "description": "Rota responsável por listar todos os pedidos do usuário logado na API.",
+                "tags": ["Order"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "limit"
+                    },
+                    {
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "offset"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/order"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "UNAUTHORIZED, erro de autenticação ou problemas com token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND, nenhum usuário encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/order/findAll": {
+            "get": {
+                "security": [
+                    {"bearerAuth": []}
+                ],
+                "summary": "Lista todos os pedidos de usuários.",
+                "description": "Rota responsável por lista todos os pedidos dos usuários da API. Esta ação requer privilégios de administrador.",
+                "tags": ["Order"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "limit"
+                    },
+                    {
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "offset"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/order"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "UNAUTHORIZED, erro de autenticação ou problemas com token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND, nenhum usuário encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/order/findById/{id}": {
+            "get": {
+                "security": [
+                    {"bearerAuth": []}
+                ],
+                "summary": "Lista o pedido informado pelo ID.",
+                "description": "Rota responsável por listar um único pedido pelo ID informado na requisição.",
+                "tags": ["Order"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "id" 
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/order"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "UNAUTHORIZED, erro de autenticação ou problemas com token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND, nenhum usuário encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/order/create": {
+            "post": {
+                "security": [
+                    {"bearerAuth": []}
+                ],
+                "summary": "Cria um novo pedido",
+                "description": "Rota reponsável pela criação de novos pedidos na API.",
+                "tags": ["Order"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/order"
+                        },
+                        "name": "body" 
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "CREATE, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/order"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "BAD REQUREST, a requisição foi encaminhada errada ou campos obrigatórios estão omissos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/updateStatus/{id}": {
+            "patch": {
+                "security": [
+                    {"bearerAuth": []}
+                ],
+                "summary": "Atualiza o status de um pedido informado pelo ID.",
+                "description": "Rota responsável por atualizar o estado de um pedido.",
+                "tags": ["Order"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "id" 
+                    },
+                    {
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "status": {"type": "string"}
+                        },
+                        "name": "body" 
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/order"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "UNAUTHORIZED, erro de autenticação ou problemas com token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/product/pizza/findAll": {
+            "get": {
+                "summary": "Lista todos as pizzas.",
+                "description": "Rota responsável por listar todas as pizzas cadastradas na API. Esta rota tras somente itens definidos como públicos.",
+                "tags": ["Pizza"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "limit"
+                    },
+                    {
+                        "in": "query",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "name": "offset"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/pizza"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "UNAUTHORIZED, erro de autenticação ou problemas com token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND, nenhum usuário encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/product/pizza/findById/{id}": {
+            "get": {
+                "summary": "Lista uma pizza informada pelo ID.",
+                "description": "Rota responsável por listar uma única pizza pelo ID informado na requisição.",
+                "tags": ["Pizza"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "id" 
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/pizza"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND, nenhum item encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/product/pizza/create": {
+            "post": {
+                "security": [
+                    {"bearerAuth": []}
+                ],
+                "summary": "Cria uma nova pizza",
+                "description": "Rota reponsável pela criação de novas pizzas na API. Usuários administradores criarão pizzas públicas, não adminstradores crirarão pizzas privadas, exclusivamente durante a criação de pedidos.",
+                "tags": ["Pizza"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/pizza"
+                        },
+                        "name": "body" 
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "CREATE, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/pizza"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "BAD REQUREST, a requisição foi encaminhada errada ou campos obrigatórios estão omissos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/product/pizza/update/{id}": {
+            "put": {
+                "security": [
+                    {"bearerAuth": []}
+                ],
+                "summary": "Atualiza uma pizza informado pelo ID.",
+                "description": "Rota responsável por atualizar uma pizza cadastrada. Rota exclusiva para usuários administratdores.",
+                "tags": ["Pizza"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "id" 
+                    },
+                    {
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/pizza"
+                        },
+                        "name": "body" 
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/pizza"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "UNAUTHORIZED, erro de autenticação ou problemas com token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/product/pizza/updateAvailability/{id}": {
+            "put": {
+                "security": [
+                    {"bearerAuth": []}
+                ],
+                "summary": "Atualiza a disponibilidade de uma pizza informado pelo ID.",
+                "description": "Rota responsável por atualizar a disponibilidade de uma pizza cadastrada. Rota exclusiva para usuários administratdores.",
+                "tags": ["Pizza"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "id" 
+                    },
+                    {
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "available": {"type": "boolean"}
+                        },
+                        "name": "body" 
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/pizza"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "UNAUTHORIZED, erro de autenticação ou problemas com token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/product/pizza/remove/{id}": {
+            "delete": {
+                "summary": "Remove uma pizza informada pelo ID.",
+                "description": "Rota responsável por remover uma única pizza pelo ID informado na requisição.",
+                "tags": ["Pizza"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "id" 
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/pizza"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "UNAUTHORIZED, erro de autenticação ou problemas com token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND, nenhum usuário encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/product/pizza/crust/findAll": {
+            "get": {
+                "summary": "Lista todos as massas de pizzas disponíveis.",
+                "description": "Rota responsável por listar todas as massas de pizzas cadastradas na API.",
+                "tags": ["Product/Pizza/Crust"],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/pizzacrust"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "UNAUTHORIZED, erro de autenticação ou problemas com token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND, nenhum usuário encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/product/pizza/crust/findById/{id}": {
+            "get": {
+                "summary": "Lista um tipo de massa de pizza informada pelo ID.",
+                "description": "Rota responsável por listar uma única massa de pizza pelo ID informado na requisição.",
+                "tags": ["Pizza"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "id" 
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/pizzacrust"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "NOT FOUND, nenhum item encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/product/pizza/crust/create": {
+            "post": {
+                "security": [
+                    {"bearerAuth": []}
+                ],
+                "summary": "Cria uma nova massa de pizza",
+                "description": "Rota reponsável pela criação de novas massas de pizzas na API. Rota exclusiva para usuários administradores.",
+                "tags": ["Product/Pizza/Crust"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/pizzacrust"
+                        },
+                        "name": "body" 
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "CREATE, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/pizzacrust"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "BAD REQUREST, a requisição foi encaminhada errada ou campos obrigatórios estão omissos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/product/pizza/crust/update/{id}": {
+            "put": {
+                "security": [
+                    {"bearerAuth": []}
+                ],
+                "summary": "Atualiza uma pizza informado pelo ID.",
+                "description": "Rota responsável por atualizar uma pizza cadastrada. Rota exclusiva para usuários administratdores.",
+                "tags": ["Pizza"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "id" 
+                    },
+                    {
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/pizza"
+                        },
+                        "name": "body" 
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/pizza"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "UNAUTHORIZED, erro de autenticação ou problemas com token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/product/pizza/updateAvailability/{id}": {
+            "put": {
+                "security": [
+                    {"bearerAuth": []}
+                ],
+                "summary": "Atualiza a disponibilidade de uma pizza informado pelo ID.",
+                "description": "Rota responsável por atualizar a disponibilidade de uma pizza cadastrada. Rota exclusiva para usuários administratdores.",
+                "tags": ["Pizza"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "id" 
+                    },
+                    {
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "available": {"type": "boolean"}
+                        },
+                        "name": "body" 
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/pizza"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "UNAUTHORIZED, erro de autenticação ou problemas com token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "INTERNAL SERVER ERROR, erro no servidor da aplicação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "message": {"type": "string"}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/product/pizza/remove/{id}": {
+            "delete": {
+                "summary": "Remove uma pizza informada pelo ID.",
+                "description": "Rota responsável por remover uma única pizza pelo ID informado na requisição.",
+                "tags": ["Pizza"],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "id" 
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK, tarefa realizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "$ref": "#/components/schemas/pizza"
                                     }
                                 }
                             }
