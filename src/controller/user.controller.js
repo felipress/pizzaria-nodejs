@@ -123,7 +123,7 @@ const addUserAddress = async (req, res) => {
 }
 const removeUserAddress = async (req, res) => {
     try{
-        const addressId = req.body.id
+        const addressId = req.params.id
         const userId = req.userId
         
         console.log(addressId)

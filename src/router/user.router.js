@@ -21,6 +21,6 @@ router.put("/update/:id", auth, validateIdParams, validateUser, userController.u
 
 // DELETE routes
 router.delete("/remove/:id", auth, adminUser, validateIdParams, userController.removeUser)
-router.delete("/removeAddress", auth, userController.removeUserAddress)
+router.delete("/removeAddress/:id", auth, userController.removeUserAddress)
 
 module.exports = router

@@ -7,7 +7,7 @@ const {validateIdParams} = require("../middleware/validation.middleware")
 
 router.get("/findById/:id", auth, validateIdParams, orderController.findOrderById)
 router.get("/find", auth, orderController.findAllOrders)
-router.get("/findAll", auth, adminUser, orderController.findAllUsersOrders)
+router.get("/findAll", auth, adminUser, pagination, orderController.findAllUsersOrders)
 router.post("/create", auth, orderController.createOrder)
 router.patch("/updateStatus/:id", auth, adminUser, validateIdParams, orderController.updateStatus)
 
